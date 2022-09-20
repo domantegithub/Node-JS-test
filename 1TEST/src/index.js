@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 
 const { port, dbconfig } = require("./config");
 const { response } = require("express");
-const {users, names, emails, address} = require("./routes")
+const { users, names, emails, address } = require("./routes");
 
 const app = express();
 
@@ -16,7 +16,6 @@ app.use("/users", users);
 app.use("/users/names", names);
 app.use("/users/emails", emails);
 app.use("/users/address", address);
-
 
 const URL = "https://jsonplaceholder.typicode.com/users";
 
@@ -43,7 +42,6 @@ app.post("/fill", async (req, res) => {
     res.status(400).send({ error: "Error" });
   }
 });
-
 
 app.all("*", (req, res) => {
   res.status(404).send({ error: "Page not found" });
