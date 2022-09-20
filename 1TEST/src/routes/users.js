@@ -8,14 +8,15 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const con = await mysql.createConnection(dbconfig);
-    const [response] = await con.execute(`SELECT id, name, email, address FROM users`);
+    const [response] = await con.execute(
+      `SELECT id, name, email, address FROM users`
+    );
     await con.end();
     res.send(response);
   } catch (error) {
     res.status(400).send({ error: "error" });
   }
 });
-
 
 router.post("/", async (req, res) => {
   try {
@@ -32,6 +33,5 @@ router.post("/", async (req, res) => {
     res.status(400).send({ error: "error" });
   }
 });
-
 
 module.exports = router;
