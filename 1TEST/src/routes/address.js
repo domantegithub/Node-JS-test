@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const con = await mysql.createConnection(dbconfig);
-    const [response] = await con.execute(`SELECT id, street FROM users`);
+    const [response] = await con.execute(`SELECT id, name, address FROM users`);
     await con.end();
     res.send(response);
   } catch (error) {
